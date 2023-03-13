@@ -1,33 +1,23 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel 9 + Bootstrap Template</title>
+@section('content')
 
-        {{-- Includiamo gli assets con la direttiva @vite --}}
-        @vite('resources/js/app.js')
-    </head>
-    <body>
-
-        <main>
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center">
-
-                        <div class="card">
-                            <div class="card-body">
-                                <img src="{{ Vite::asset('resources/img/laravel.png') }}" alt="">
-
-                                <h1 class="card-title">Laravel 9 + Bootstrap Template</h1>
-                            </div>
+    <div class="container">
+        <div class="row">
+            @foreach ($comics as $comic)
+                <div class="col-2">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81rYQEkagGL._CR0,207,1222,1222_UX256.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ $comic['title']}}</h5>
+                          <p class="card-text">{{ $comic['description']}}</p>
+                          <p class="card-text">{{ $comic['sale_date']}}</p>
+                          <a href="#" class="btn btn-primary">{{ $comic['price']}}</a>
                         </div>
-
                     </div>
                 </div>
-            </div>
-        </main>
+            @endforeach
+        </div>
+    </div>
 
-    </body>
-</html>
+@endsection
